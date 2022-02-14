@@ -23,6 +23,43 @@ through the logic of the problem.
 import csv
 
 
+def main():
+    student_dict = {}
+    
+
+
+    student_file = open("students.csv", mode="r")
+    avg_file = open("processedStudents.csv", mode="a")
+    csvreader = csv.reader(student_file, delimiter=",")
+
+    next(csvreader)
+    for row in csvreader:
+        if float(row[8]) < 3:
+            #stud_id,firstname,lastname,major,classification,gpa
+            avg_file.write(row[0] + ',' + row[2] + ',' + row[3] + ',' + row[6] + ',' + row[7] + ',' + row[8] + '\n')
+
+        student_dict[row[0]] = row[8]
+
+
+    print(student_dict)
+    print('student 567890123 GPA: ' + student_dict['567890123'])
+
+    student_file.close()
+    avg_file.close()
+
+
+main()
+
+
+
+
+
+
+
+
+
+
+
 # create a file object to open the file in read mode
 
 
